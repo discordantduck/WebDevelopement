@@ -6,7 +6,7 @@
 
 ## Question 1
 ## (a)
-![Image title](images/repo_img.png)
+!(images/repo_img.png)
 ## (b)
 ![Image title](images/local_directory.png)
 

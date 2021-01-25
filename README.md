@@ -6,8 +6,8 @@
 
 ## Question 1
 ## (a)
-!(images/repo_img.png)
+![repo_img.png](images/repo_img.png)
 ## (b)
-![Image title](images/local_directory.png)
+![local_directory.png](images/local_directory.png)
 
 ## Question 2

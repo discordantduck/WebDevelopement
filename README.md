@@ -6,16 +6,16 @@
 
 ## Question 1
 ## (a)
-![repo_img.png](images/repo_img.png)
+![repo_img.png](images/repo_img.PNG)
 ## (b)
-![local_directory.png](images/local_directory.png)
+![local_directory.png](images/local_directory.PNG)
 
 ## Question 2
 ## (a)
 ## (b) 
 ![git_log.png](images/git_log.PNG)
 ## (c)
-![pushed.png](images/pushed.png)
+![pushed.png](images/pushed.PNG)
 
 ## Question 3
 ## (a) 

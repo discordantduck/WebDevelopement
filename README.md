@@ -1,6 +1,6 @@
-**Student Name**:  Hui Lin
+**Student Name**:  Your Name Here!
 
-**NetID**: ti2236
+**NetID**: Your netId here (all lowercase)
 
 > The start of all your assignments must begin with your name and student id so I can give you credit for your "submission".
 

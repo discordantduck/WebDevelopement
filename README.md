@@ -13,9 +13,9 @@
 ## Question 2
 ## (a)
 ## (b) 
-![local_directory.png](images/git_log.png)
+![git_log.png](images/git_log.png)
 ## (c)
-![local_directory.png](images/pushed.png)
+![pushed.png](images/pushed.png)
 
 ## Question 3
 ## (a) 

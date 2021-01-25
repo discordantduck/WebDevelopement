@@ -2,6 +2,8 @@
 
 **NetID**: ti2236
 
+is this working?
+
 > The start of all your assignments must begin with your name and student id so I can give you credit for your "submission".
 
 # Assignment Outline for CS351/CS651

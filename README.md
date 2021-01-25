@@ -13,7 +13,7 @@
 ## Question 2
 ## (a)
 ## (b) 
-![git_log.png](images/git_log.png)
+![git_log.png](images/git_log.PNG)
 ## (c)
 ![pushed.png](images/pushed.png)
 

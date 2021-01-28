@@ -36,7 +36,7 @@
 # Question 5
 ## (a)
 ```c++
-int binarySearch(int[] sorted, int n, int target)
+int binarySearch(int sorted[], int n, int target)
 {
     int lowerLim = 0;
     int upperLim = n;

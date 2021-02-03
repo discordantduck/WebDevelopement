@@ -1,8 +1,6 @@
-**Hui Lin**
-
-**NetID: ti2236**
-
 # Homework #2 Solution
+**Hui Lin**
+**NetID: ti2236**
 
 ## Question 1
 ## (a)

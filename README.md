@@ -1,5 +1,6 @@
 # Homework #2 Solution
 **Hui Lin**
+
 **NetID: ti2236**
 
 ## Question 1

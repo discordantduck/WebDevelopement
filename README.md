@@ -6,7 +6,13 @@
 ## Question 1
 ## (a)
 ## (b)
+    (1) no
+    (2) no
+    (3) no
+* index.html
+* club_activities.html
 ## (c)
+    
 ## (d)
 ## (e)
 

@@ -22,7 +22,8 @@
     we should nest <footer> outside <main> and as the last item in <body> because the copyright should apply to the whole page
 ## (c)
 ## (d)
-    ```
+```html
+
 
 ## Question 3
 ## (a)

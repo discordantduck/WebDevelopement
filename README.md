@@ -12,15 +12,17 @@
 * index.html
 * club_activities.html
 ## (c)
-    
 ## (d)
 ## (e)
 
 ## Question 2
 ## (a)
+    we should nest <header> outside <main> and inside <body> to serve an introductory content for the whole page
 ## (b)
+    we should nest <footer> outside <main> and as the last item in <body> because the copyright should apply to the whole page
 ## (c)
 ## (d)
+    ```
 
 ## Question 3
 ## (a)

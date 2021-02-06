@@ -1,0 +1,43 @@
+header
+{
+    font-family: "Times New Roman", "seriff";
+    text-align: center;
+}
+
+body
+{
+    background-color: gray;
+    margin: 10px;
+    padding: 10px;
+}
+
+nav
+{
+    background-color: silver;
+    margin: 10px;
+    padding: 10px;
+    max-width: 150px;
+    border-style: solid;
+}
+
+nav > ul li
+{
+    list-style-type: none;
+}
+
+main
+{
+    background-color: silver;
+    margin: 10px;
+    padding: 10px;
+}
+
+ul li:active
+{
+    background-color: white;
+}
+
+footer
+{
+    text-align: center;
+}

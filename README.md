@@ -7,12 +7,12 @@
 ## (a)
 ![1a.PNG](images/1a.PNG)
 ## (b)
-    1. no
-    2. no
-    3. no
+1. no
+2. no
+3. no
 
-    index.html
-    club_activities.html
+* index.html
+* club_activities.html
 ## (c)
 ![1c.PNG](images/1c.PNG)
 ## (d)
@@ -22,9 +22,9 @@
 
 ## Question 2
 ## (a)
-    we should nest <header> outside <main> and inside <body> to serve an introductory content for the whole page
+we should nest \<header\> outside \<main\> and inside \<body\> to serve an introductory content for the whole page
 ## (b)
-    we should nest <footer> outside <main> and as the last item in <body> because the copyright info shouldn't be in <main>
+we should nest \<footer\> outside \<main\> and as the last item in \<body\> because the copyright info shouldn't be in \<main\>
 ## (c)
 ![2c.PNG](images/2c.PNG)
 ## (d)
@@ -74,28 +74,31 @@
 
 ## Question 3
 ## (a)
-    1. "hello" is a string, not an int, NaN means "not a number"
-    2. parse everything before the first char as int if possible
-    3. parse the first 2 things as int if possible
-    4. no, because it stops parsing after reading 'h'
+1. "hello" is a string, not an int, NaN means "not a number"
+2. parse everything before the first char as int if possible
+3. parse the first 2 things as int if possible
+4. no, because it stops parsing after reading 'h'
+
 ![3a.PNG](images/3a.PNG)
 ## (b)
 ![3b.PNG](images/3b.PNG)
 ## (c)
-    1. yes
-    2. "'It'" is closed between a pair of '', but there isn't a second pair of '' to close everything after it, so an error occurs
-    3. '\' indicates the next character should be treated specially, so the ' will be treated as part of the string
+1. yes
+2. "'It'" is closed between a pair of '', but there isn't a second pair of '' to close everything after it, so an error occurs
+3. '\' indicates the next character should be treated specially, so the ' will be treated as part of the string
+
 ![3c.PNG](images/3c.PNG)
 ## (d)
-    1. store every char in name as uppercase in uname
-    2. store every char in name as lowercase in lname
-    3. they check if the uname/lname includes 'A'/'i'
+1. store every char in name as uppercase in uname
+2. store every char in name as lowercase in lname
+3. they check if the uname/lname includes 'A'/'i'
+
 ![3d.PNG](images/3d.PNG)
 ## (e)
 ![3e.PNG](images/3e.PNG)
 ## Question 4
 ## (a)
-    Times New Roman
+Times New Roman
 ## (b)
 ![4b.PNG](images/4b.PNG)
 ## (c)

@@ -13,6 +13,7 @@
 
 * index.html
 * club_activities.html
+* login.html
 ## (c)
 ![1c.PNG](images/1c.PNG)
 ## (d)

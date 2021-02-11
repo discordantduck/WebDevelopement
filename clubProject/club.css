@@ -20,7 +20,7 @@ nav
     border-style: solid;
 }
 
-nav > ul li
+nav ul li
 {
     list-style-type: none;
 }

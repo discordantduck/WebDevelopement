@@ -41,3 +41,16 @@ footer
 {
     text-align: center;
 }
+
+table
+{
+    border-collapse: collapse;
+    border: 2px solid;
+}
+
+td, th
+{
+    border: 1px solid;
+    padding: 10px;
+    text-align: center;
+}

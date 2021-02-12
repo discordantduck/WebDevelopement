@@ -21,10 +21,25 @@ nav ul li
 ## (a)
 ## (b)
 ## (c)
+``` css
+table
+{
+    border-collapse: collapse;
+    border: 2px solid;
+}
+
+td, th
+{
+    border: 1px solid;
+    padding: 10px;
+    text-align: center;
+}
+```
 
 ## Question 3
 ## (a)
 ## (b)
+http://csweb01.csueastbay.edu/~ti2236/clubProject/index.html
 
 ## Question 4
 ## (a)

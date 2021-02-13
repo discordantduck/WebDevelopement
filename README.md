@@ -6,9 +6,13 @@
 ## Question 1
 ## (a)
 * index.html
+
+![git_log.png](images/1a.PNG)
 ## (b)
 * Smile: 128578
 * Question mark: 10067
+
+![git_log.png](images/1b.PNG)
 ## (c)
 ``` css
 nav ul li
@@ -20,6 +24,7 @@ nav ul li
 ## Question 2
 ## (a)
 ## (b)
+![git_log.png](images/2b.PNG)
 ## (c)
 ``` css
 table
@@ -36,8 +41,10 @@ td, th
 }
 ```
 
+![git_log.png](images/2c.PNG)
 ## Question 3
 ## (a)
+![git_log.png](images/3a.PNG)
 ## (b)
 http://csweb01.csueastbay.edu/~ti2236/clubProject/index.html
 
@@ -49,6 +56,8 @@ http://csweb01.csueastbay.edu/~ti2236/clubProject/index.html
 4. returns the index of "galaxy" in the list
 5. yes, "college" replaced "galaxy"
 6. pops the top of the list, which is "away"
+
+![git_log.png](images/4a.PNG)
 ## (b)
 1. take an, assumed, string and return a copy of the string all in uppercase
 2. calls upper() on every element of myArray2 and return the result to be stored in myArray3
@@ -59,3 +68,5 @@ http://csweb01.csueastbay.edu/~ti2236/clubProject/index.html
 2. yes, the courses are an array of strings
 3. 0
 4. Notepad++, VS Code, CLion
+
+![git_log.png](images/4c.PNG)

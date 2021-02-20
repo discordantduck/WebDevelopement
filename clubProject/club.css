@@ -73,12 +73,6 @@ input:invalid
     background-color: red;
 }
 
-.show
-{
-    margin-left: 2500px;
-    height: 10px
-}
-
 .signup_summary_style
 {
     border: 5px solid;
@@ -87,8 +81,14 @@ input:invalid
     text-align: center;
 }
 
-#ThanksDialog
+.show
 {
-    margin-left: -2000px;
+    margin-left: 0px;
+    height: 100px
+}
+
+.hide
+{
+    margin-left: -5000px;
     height: 0px;
 }

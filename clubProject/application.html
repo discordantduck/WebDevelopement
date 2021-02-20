@@ -39,8 +39,10 @@
                 <button id="signup_button">Sign Up</button>
             </form>
 
-            <section id="ThanksDialog">
-                <header>Thanks for Signing Up</header>
+            <section id="ThanksDialog" class="hide">
+                <header>
+                    <h2>Thanks for Signing Up</h2>
+                </header>
                 <p id="signup_summary"></p>
             </section>
         </main>
@@ -55,10 +57,14 @@
             {
                 event.preventDefault();
 
-                let message = document.getElementById("signup_summary");
-                message.innerHTML = "Name: " + name.value + " Email address: " + email_address.value + " Newsletters: " + newsletter.value;
-                message.classList.add("show");
-                message.classList.add("signup_summary_style");
+                let dialog = document.getElementById("ThanksDialog");
+                dialog.classList.remove("hide");
+                dialog.classList.add("show");
+
+                let summary = document.getElementById("signup_summary");
+                summary.innerHTML = "Name: " + name.value + " Email address: " + email_address.value + " Newsletters: " + 
+                                    newsletter.value;
+                dialog.classList.add("signup_summary_style");
 
                 let button = document.createElement("button");
                 button.innerHTML = "Close";

@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta charset="UTF-8">
         <link rel="stylesheet" href="club.css">
-        <title>Add title here</title>
+        <script src="eventData.js"></script>
+        <title>Club Activities</title>
     </head>
 
     <body>
@@ -11,6 +13,7 @@
                 <li><a href="index.html">Home</a></li>
                 <li class="active"><a href="club_activities.html">Activities</a></li>
                 <li><a href="login.html">Login</a></li>
+                <li><a href="application.html">Application</a></li>
             </ul>
         </nav>
 
@@ -20,28 +23,28 @@
             </header>
 
             <table>
-                <tr>
-                    <th>Name</th>
-                    <th>Date</th>
-                    <th>Description</th>
-                </tr>
-                <tr>
-                    <th>Glitchless Speedrun</th>
-                    <td>Submit your best time, only once</td>
-                    <td>No glitches, finish the game, any game, as fast as you can</td>
-                </tr>
-                <tr>
-                    <th>Deathless Challenge Run</th>
-                    <td>Whenever you finish</td>
-                    <td>No glitch, no death, any game</td>
-                </tr>
-                <tr>
-                    <th>Nose Only Run</th>
-                    <td>Everyday, anyday, any game, all games, always</td>
-                    <td>This is a joke, please don't actually do it</td>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody id="activity_table"></tbody>
             </table>
         </main>
+        
+        <script>
+            let tbody = document.getElementById("activity_table");
+
+            events.forEach(function(events)
+            {
+                let tr = document.createElement("tr");
+                let content = `<td>${events.name}</td><td>${events.dates}</td><td>${events.description}</td>`;
+                tr.innerHTML = content;
+                tbody.appendChild(tr);
+            })
+        </script>
 
         <footer>Copyright @ 2021 Leo Lin</footer>
     </body>

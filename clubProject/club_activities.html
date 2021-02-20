@@ -40,7 +40,7 @@
             events.forEach(function(events)
             {
                 let tr = document.createElement("tr");
-                let content = `<td>${events.name}</td><td>${events.dates}</td><td>${events.description}</td>`;
+                let content = `<td>${events.name}</td><td>${events.date}</td><td>${events.description}</td>`;
                 tr.innerHTML = content;
                 tbody.appendChild(tr);
             })

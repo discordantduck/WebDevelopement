@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>DOM JS Array Practice with State Data</title>
+    <script src="states.js"></script>
+    <style>
+        main {
+            max-width: 40em;
+            background-color: white;
+        }
+        
+        body {
+            background-color: aliceblue;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        #AbbrGame div {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        #AbbrGame article {
+            width: 10em;
+            border: solid 1px;
+            padding-left: 0.3em;
+            margin-top: 0.2em;
+            margin-right: 0.2em;
+        }
+        
+        #AbbrGame article p {
+            margin: 0.2em;
+        }
+        
+        .happy {
+            background-color: greenyellow;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <header>
+            <h1 id="PageTitle">DOM and Array Practice with US state data</h1>
+        </header>
+        <section id="IntroSection">
+            <h2>JavaScript DOM and Array Practice</h2>
+            <p> This page includes an JavaScript array of objects about states in the US. You will use this data to create DOM elements per the homework instructions.
+            </p>
+            <p>You are not allowed to modify the HTML, only the script tag at the bottom of the body.
+            </p>
+        </section>
+        <section id="LeastPop">
+            <h2>The Five Least Populated States</h2>
+            <ol></ol>
+        </section>
+        <section id="AbbrGame">
+            <h2>Learn Your Abbreviations</h2>
+            <div></div>
+        </section>
+    </main>
+    <script>
+        let stateList = document.querySelector("#LeastPop ol");
+
+        function popOrder(stateA, stateB)
+        {
+            return stateA.population - stateB.population;
+        }
+
+        states.sort(popOrder);
+
+        let lastFive = states.slice(0,5);
+
+        function createStateItem(state)
+        {
+            let stateLi = document.createElement("li");
+            let content = `<p>${state.state} was admitted to the union ${state.admission_date}</p>`
+            content += `<p>${state.code} is known as the ${state.nickname}</p>`
+            stateLi.innerHTML = content;
+            stateList.appendChild(stateLi);
+        }
+
+        lastFive.forEach(createStateItem);
+    </script>
+</body>
+
+</html>
+

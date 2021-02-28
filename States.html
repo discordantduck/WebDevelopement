@@ -63,27 +63,44 @@
         </section>
     </main>
     <script>
-        let stateList = document.querySelector("#LeastPop ol");
+        // question 1
+        let leastPop = document.querySelector("#LeastPop ol");
 
-        function popOrder(stateA, stateB)
+        function orderByPop(stateA, stateB)
         {
             return stateA.population - stateB.population;
         }
 
-        states.sort(popOrder);
+        states.sort(orderByPop);
 
-        let lastFive = states.slice(0,5);
+        let fiveLeast = states.slice(0,5);
 
-        function createStateItem(state)
+        function makeLeastPop(state)
         {
-            let stateLi = document.createElement("li");
-            let content = `<p>${state.state} was admitted to the union ${state.admission_date}</p>`
-            content += `<p>${state.code} is known as the ${state.nickname}</p>`
-            stateLi.innerHTML = content;
-            stateList.appendChild(stateLi);
+            let temp = document.createElement("li");
+            let content = `<p>${state.state}, code: ${state.code}, population: ${state.population}, capital: ${state.capital_city}</p>`
+            temp.innerHTML = content;
+            leastPop.appendChild(temp);
         }
 
-        lastFive.forEach(createStateItem);
+        fiveLeast.forEach(makeLeastPop);
+        // end
+
+        // question 2
+        let abbrGame = document.querySelector("#AbbrGame div");
+
+        function makeAbbrGame(state)
+        {
+            let temp = document.createElement("article");
+            let content = `<p>${state.state}</p> <input id="${state.code}" type="text"><p><small title="${state.code}">Hint</small></p>`;
+            temp.innerHTML = content;
+            abbrGame.appendChild(temp);
+        }
+
+        states.forEach(makeAbbrGame);
+        // end
+
+        
     </script>
 </body>
 

@@ -37,3 +37,4 @@ let markdownDataString = fs.readFileSync(fileName, 'utf8');
 
 let parsed = reader.parse(markdownDataString);
 let result = writer.render(parsed);
+

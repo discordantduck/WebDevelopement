@@ -27,3 +27,13 @@ for(let i in temp.events)
 
 console.log(myArray);
 
+// 2c
+let commonmark = require('commonmark');
+let reader = new commonmark.Parser();
+let writer = new commonmark.HtmlRenderer();
+
+fileName = __dirname + '/about.md';
+let markdownDataString = fs.readFileSync(fileName, 'utf8');
+
+let parsed = reader.parse(markdownDataString);
+let result = writer.render(parsed);

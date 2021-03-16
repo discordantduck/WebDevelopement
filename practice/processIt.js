@@ -6,7 +6,7 @@ let fileName = __dirname + '/about.md';
 let fileData = fs.readFileSync(fileName, 'utf8');
 let temp = fileData.split("\n");
 
-console.log(temp.length - 1);
+//console.log("number of lines: " + (temp.length - 1));
 
 // 1e
 fileName = __dirname + '/eventData.json';
@@ -25,7 +25,12 @@ for(let i in temp.events)
     });
 }
 
-console.log(myArray);
+for(let i in myArray)
+{
+    console.log("name: " + myArray[i].name);
+    console.log("date: " + myArray[i].date);
+    console.log("description: " + myArray[i].description);
+}
 
 // 2c
 let commonmark = require('commonmark');

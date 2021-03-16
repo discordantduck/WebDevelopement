@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "commonmark": "^0.29.3",
-    "gray-matter": "^4.0.2"
+    "gray-matter": "^4.0.2",
+    "nunjucks": "^3.2.3"
   }
 }

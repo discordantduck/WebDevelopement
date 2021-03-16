@@ -52,9 +52,10 @@ console.log(metaAndContent.data);
 
 // 4c
 const nunjucks = require('nunjucks');
+
 nunjucks.configure('views', { autoescape: true });
 
-let contents = fs.readFileSync('./content/outputfile.html');
-let outString = nunjucks.render('./views/base.njk', {mainContent: contents});
+let contents = fs.readFileSync('./content/index.html');
+let outString = nunjucks.render('base.njk', {mainContent: contents});
 
-fs.writeFileSync('./output/about.html', outString);
+fs.writeFileSync('./output/outputfile.html', outString);

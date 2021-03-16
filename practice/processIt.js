@@ -38,3 +38,9 @@ let markdownDataString = fs.readFileSync(fileName, 'utf8');
 let parsed = reader.parse(markdownDataString);
 let result = writer.render(parsed);
 
+// 3b
+const matter = require('gray-matter');
+fileName = __dirname + '/about.md';
+fileData = fs.readFileSync(fileName, 'utf8');
+let metaAndContent = matter(fileData);
+console.log(metaAndContent.data);

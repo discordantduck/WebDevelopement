@@ -49,3 +49,12 @@ fileName = __dirname + '/about.md';
 fileData = fs.readFileSync(fileName, 'utf8');
 let metaAndContent = matter(fileData);
 console.log(metaAndContent.data);
+
+// 4c
+const nunjucks = require('nunjucks');
+nunjucks.configure('views', { autoescape: true });
+
+let contents = fs.readFileSync('./content/outputfile.html');
+let outString = nunjucks.render('./views/base.njk', {mainContent: contents});
+
+fs.writeFileSync('./output/about.html', outString);

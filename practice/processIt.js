@@ -6,7 +6,7 @@ let fileName = __dirname + '/about.md';
 let fileData = fs.readFileSync(fileName, 'utf8');
 let temp = fileData.split("\n");
 
-//console.log("number of lines: " + (temp.length - 1));
+console.log("number of lines: " + (temp.length - 1));
 
 // 1e
 fileName = __dirname + '/eventData.json';
@@ -48,6 +48,7 @@ const matter = require('gray-matter');
 fileName = __dirname + '/about.md';
 fileData = fs.readFileSync(fileName, 'utf8');
 let metaAndContent = matter(fileData);
+
 console.log(metaAndContent.data);
 
 // 4c
@@ -55,7 +56,7 @@ const nunjucks = require('nunjucks');
 
 nunjucks.configure('views', { autoescape: true });
 
-let contents = fs.readFileSync('./content/index.html');
+let contents = fs.readFileSync('./content/outputfile.html');
 let outString = nunjucks.render('base.njk', {mainContent: contents});
 
-fs.writeFileSync('./output/outputfile.html', outString);
+fs.writeFileSync('./output/about.html', outString);

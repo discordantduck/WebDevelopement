@@ -1,12 +1,37 @@
-constfs = require('fs');// File system module
-let commonmark = require('commonmark');
+const fs = require('fs');
 
+// common mark
+let commonmark = require('commonmark');
 let reader = new commonmark.Parser();
 let writer = new commonmark.HtmlRenderer();
-let fname = __dirname +'/application.md';
 
-let fdata = fs.readFileSync(fname,'utf8');
-let parsed = reader.parse(fdata);
-let result = writer.render(parsed);
+// gray matter
+const matter = require('gray-matter');
 
-fs.writeFileSync(__dirname +'/application.html', result);
+// nunjucks
+const nunjucks = require('nunjucks');
+nunjucks.configure('views', { autoescape: true });
+
+// files to read
+let srcPrefix = __dirname + "/src";
+let bldPrefix = __dirname + "/build";
+let allFiles = fs.readdirSync(srcPrefix);
+
+console.log("Processing the src directory: ");
+allFiles.forEach(function(srcName) {
+    console.log('Reading ' + srcName);
+
+    // get data about file
+    let fname = srcPrefix + '/' + srcName;
+    let fdata = fs.readFileSync(fname, 'utf8');
+
+    // file processing
+    let metaAndContent = matter(fdata);
+    let parsed = reader.parse(metaAndContent.content);
+    let result = writer.render(parsed);
+    let outString = nunjucks.render('base.njk', {mainContent: result, data: metaAndContent.data});
+
+    // write the file
+    let outName = (bldPrefix + '/' + srcName).replace(".md", ".html");
+    fs.writeFileSync(outName, outString);
+});

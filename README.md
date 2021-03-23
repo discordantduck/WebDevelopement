@@ -5,185 +5,93 @@
 
 ## Question 1
 ## (a)
-version 14.16.0
 ## (b)
-``` markdown
-# Heading
-
-Sample text
-
-## Another heading
-* Unordered list
-1. one
-2. two
-3. tree
-```
 ## (c)
-![1c.png](images/1c.PNG)
+clubSSG/build
 ## (d)
-JSON
-``` json
-{"events":
-    [
-        {
-            "name": "Speedrun",
-            "date": "March 32",
-            "description": "Complete Dark Souls as fast as you can"
-        },
-        {
-            "name": "No hit",
-            "date": "April 1",
-            "description": "Complete Dark Souls without getting hit or staggered"
-        },
-        {
-            "name": "Deathless",
-            "date": "Febuary 30",
-            "description": "Complete Dark Souls without dying"
-        }
-    ]
-}
-```
 ## (e)
-![1e.png](images/1e.PNG)
-## Question 2
-## (a)
-typed "npm init --yes" in the terminal
-## (b)
-![2b.png](images/2b.PNG)
-## (c)
-``` javascript
-let commonmark = require('commonmark');
-let reader = new commonmark.Parser();
-let writer = new commonmark.HtmlRenderer();
-
-fileName = __dirname + '/about.md';
-let markdownDataString = fs.readFileSync(fileName, 'utf8');
-
-let parsed = reader.parse(markdownDataString);
-let result = writer.render(parsed);
-```
-
-![2c.png](images/2c.PNG)
-## Question 3
-## (a)
-![3a.png](images/3a.PNG)
-## (b)
-![3b.png](images/3b.PNG)
-
-## Question 4
-## (a)
-![4a.png](images/4a.PNG)
-## (b)
 ``` html
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>{{title}}</title>
-        <title>{{author}}</title>
-        <title>{{description}}</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="club.css">
+        <title>Main</title>
     </head>
+
     <body>
-    <nav>
-        
-    </nav>
-    <main>
-        {{mainContent | safe}}
-    </main>
+        <nav>
+            {% include "mainMenu.html" %}
+        </nav>
+
+        <main>
+            {{mainContent | safe}}
+        </main>
+
+        <footer>Copyright @ 2021 Leo Lin</footer>
     </body>
 </html>
 ```
-## (c)
+## (f)
 ``` javascript
-// 1c
 const fs = require('fs');
-const readline = require('readline');
 
-let fileName = __dirname + '/about.md';
-let fileData = fs.readFileSync(fileName, 'utf8');
-let temp = fileData.split("\n");
-
-console.log("number of lines: " + (temp.length - 1));
-
-// 1e
-fileName = __dirname + '/eventData.json';
-fileData = fs.readFileSync(fileName, 'utf8');
-temp = JSON.parse(fileData);
-
-let myArray = [];
-
-for(let i in temp.events)
-{
-    myArray.push
-    ({
-        name: temp.events[i].name,
-        date: temp.events[i].date,
-        description: temp.events[i].description
-    });
-}
-
-for(let i in myArray)
-{
-    console.log("name: " + myArray[i].name);
-    console.log("date: " + myArray[i].date);
-    console.log("description: " + myArray[i].description);
-}
-
-// 2c
+// common mark
 let commonmark = require('commonmark');
 let reader = new commonmark.Parser();
 let writer = new commonmark.HtmlRenderer();
 
-fileName = __dirname + '/about.md';
-let markdownDataString = fs.readFileSync(fileName, 'utf8');
-
-let parsed = reader.parse(markdownDataString);
-let result = writer.render(parsed);
-
-// 3b
+// gray matter
 const matter = require('gray-matter');
-fileName = __dirname + '/about.md';
-fileData = fs.readFileSync(fileName, 'utf8');
-let metaAndContent = matter(fileData);
 
-console.log(metaAndContent.data);
-
-// 4c
+// nunjucks
 const nunjucks = require('nunjucks');
-
 nunjucks.configure('views', { autoescape: true });
 
-let contents = fs.readFileSync('./content/outputfile.html');
-let outString = nunjucks.render('base.njk', {mainContent: contents});
+// files to read
+let srcPrefix = __dirname + "/src";
+let bldPrefix = __dirname + "/build";
+let allFiles = fs.readdirSync(srcPrefix);
 
-fs.writeFileSync('./output/about.html', outString);
+console.log("Processing the src directory: ");
+allFiles.forEach(function(srcName) {
+    console.log('Reading ' + srcName);
+
+    // get data about file
+    let fname = srcPrefix + '/' + srcName;
+    let fdata = fs.readFileSync(fname, 'utf8');
+
+    // file processing
+    let metaAndContent = matter(fdata);
+    let parsed = reader.parse(metaAndContent.content);
+    let result = writer.render(parsed);
+    let outString = nunjucks.render('base.njk', {mainContent: result, data: metaAndContent.data});
+
+    // write the file
+    let outName = (bldPrefix + '/' + srcName).replace(".md", ".html");
+    fs.writeFileSync(outName, outString);
+});
 ```
+## Question 2
+## (a)
+* 192.168.86.37
+## (b)
+IP specifies the intended address outside of a local network, whereas ethernet specifies the intended recipient within a network
+## (c)
+I would split the packet into smaller chunks and have a mechanism for chaining them in a way where they can recognize the next chunk in the link. The transport layer would probably have this functionality
+## (d)
+TCP provides error checking, whereas UDP doesn't. That's important for web traffic because precision is important in that scenario
 
-``` html
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title></title>
-        <title></title>
-        <title></title>
-    </head>
-    <body>
-    <nav>
-        
-    </nav>
-    <main>
-        <h1>Heading</h1>
-<p>Sample text</p>
-<h2>Another heading</h2>
-<ul>
-<li>Unordered list</li>
-</ul>
-<ol>
-<li>one</li>
-<li>two</li>
-<li>tree</li>
-</ol>
-
-    </main>
-    </body>
-</html>
-```
+## Question 3
+## (a)
+    $ node temp.js
+    DNS Servers:
+    [ '192.168.86.1' ]
+## (b)
+    Address for reddit.com
+    [
+    '151.101.1.140',
+    '151.101.129.140',
+    '151.101.65.140',
+    '151.101.193.140'
+    ]

@@ -9,3 +9,5 @@ dist
 
 # Dependency directories
 node_modules
+
+clubSSG/build

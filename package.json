@@ -11,7 +11,9 @@
   "license": "ISC",
   "dependencies": {
     "commonmark": "^0.29.3",
+    "express": "^4.17.1",
     "gray-matter": "^4.0.2",
+    "node-fetch": "^2.6.1",
     "nunjucks": "^3.2.3"
   }
 }

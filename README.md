@@ -84,21 +84,21 @@ each method takes the return value of the previous function in the chain as the 
 
     add the line "racingPs.then((msg) => console.log(msg));"
 ## (c)
-![2c](/images/2c.png)
+![2c](/images/2c.PNG)
 ## (d)
-![2d](/images/2d.png)
+![2d](/images/2d.PNG)
 
 ## Question 3
 ## (a)
-![3a](/images/3a.png)
+![3a](/images/3a.PNG)
 ## (b)
-![3b](/images/3b.png)
+![3b](/images/3b.PNG)
 ## (c)
-![3c](/images/3c.png)
+![3c](/images/3c.PNG)
 
 ## Question 4
 ## (a)
-![4a](/images/4a.png)
+![4a](/images/4a.PNG)
 ## (b)
 ``` javascript
 const express = require('express');
@@ -177,6 +177,6 @@ app.listen(port, host, function () {
 {% endblock %}
 ```
 ## (e)
-![4e](/images/4e.png)
+![4e](/images/4e.PNG)
 ## (f)
-![4f](/images/4f.png)
+![4f](/images/4f.PNG)

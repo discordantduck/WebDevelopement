@@ -98,8 +98,85 @@ each method takes the return value of the previous function in the chain as the 
 
 ## Question 4
 ## (a)
+![4a](/images/4a.png)
 ## (b)
+``` javascript
+const express = require('express');
+const path = require('path');
+const app = express();
+app.use(express.static(path.join(__dirname, 'public'))); 
+const nunjucks = require('nunjucks');
+nunjucks.configure(path.join(__dirname, 'templates'), {
+    autoescape: true,
+    express: app
+});
+
+const host = '127.0.0.2';
+const port = 3001;
+
+let count = 0;
+let startDate = new Date();
+let yourName = 'Leo L.';
+let netId = '2236';
+
+app.get('/', function (req, res) {
+    count++;
+    let info = {host: host, port: port, count: count, startDate: startDate.toLocaleString(), yourName: yourName, netId: netId}
+    res.render('default.njk', info);
+});
+
+let temp = new Date(Date.now());
+
+app.get('/uptime', function(req, res){
+    let temp2 = new Date();
+    let info = {host: host, port: port, startTime: temp, currentTime: temp2}
+    res.render('uptime.njk', info);
+});
+
+app.listen(port, host, function () {
+    console.log(`deployTest app listening on IPv4: ${host}:${port}`);
+});
+```
 ## (c)
+``` html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% block metaStuff %}
+        {% endblock %}
+        <link href="css/club.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <main>
+            {% block main %}
+            {% endblock %}
+        </main>
+        
+        <footer>
+            <p>Copyright @ 2021 Leo Lin</p>
+        </footer>
+    </body>
+</html>
+```
 ## (d)
+``` html
+{% extends "base.njk" %}
+
+{% block metaStuff %}
+    <title>Server Uptime</title>
+{% endblock %}
+    
+{% block main %}
+    <h2>count: {{count}}</h2>
+    <h2>startDate: {{startDate}}</h2>
+    <h2>yourName: {{yourName}}</h2>
+    <h2>netId: {{netId}}</h2>
+{% endblock %}
+```
 ## (e)
+![4e](/images/4e.png)
 ## (f)
+![4f](/images/4f.png)

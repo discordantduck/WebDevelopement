@@ -4,13 +4,6 @@ header
     text-align: center;
 }
 
-main h1
-{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 body
 {
     background-color: gray;
@@ -52,7 +45,6 @@ main
     margin: 10px;
     padding: 10px;
     margin-top: 50px;
-    max-width: 80%;
 }
 
 main h2, img, p

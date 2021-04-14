@@ -1,0 +1,25 @@
+{% extends "clubBase.njk" %}
+
+{% block metaStuff %}
+    <title>Login</title>
+{% endblock %}
+    
+{% block main %}
+    <main>
+        <form>
+            <header>
+                <h1>Login</h1>
+            </header>
+            
+            <label>Email</label>
+            <input id="email" type="email" required></input>
+
+            <label>Password</label>
+            <input type="password" required></input>
+
+            <button id="login_button">Login</button>
+        </form>
+
+        <p id="message"></p>
+    </main>
+{% endblock %}

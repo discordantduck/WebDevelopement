@@ -135,4 +135,5 @@ app.post('/membershipSignup', urlencodedParser, function(req, res)
 
 ## Question 4
 ## (a)
+![4a](/images/4a.PNG)
 ## (b)

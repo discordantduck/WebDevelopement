@@ -18,7 +18,13 @@
                     <th>Description</th>
                 </tr>
             </thead>
-            <tbody id="activity_table"></tbody>
+            {%for event in events.events %}
+                <tbody>
+                    <th>{{event.name}}</th>
+                    <th>{{event.date}}</th>
+                    <th>{{event.description}}</th>
+                </tbody>
+            {% endfor %}
         </table>
     </main>
 {% endblock %}

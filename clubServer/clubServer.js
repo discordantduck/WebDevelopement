@@ -13,6 +13,7 @@ nunjucks.configure(path.join(__dirname, 'templates'),
 });
 const urlencodedParser = express.urlencoded({extended: true});
 
+let activities = require('./eventData.json');
 let memberApplications = [];
 
 app.get('/', function (req, res)
@@ -22,7 +23,7 @@ app.get('/', function (req, res)
 
 app.get('/activities', function(req, res)
 {
-    res.render('activities.njk');
+    res.render('activities.njk', {events: activities});
 });
 
 app.get('/login', function(req, res)
@@ -42,6 +43,17 @@ app.post('/membershipSignup', urlencodedParser, function(req, res)
     memberApplications.push(req.body);
     console.log(memberApplications);
     res.render('thanks.njk', req.body);
+});
+
+app.get('/serverId', function(req, res)
+{
+    let temp =
+    {
+        "studentName": "Leo",
+        "netId": "ti2236",
+        "message": "hello world"
+    };
+    res.send(temp);
 });
 
 app.listen(port, host, function ()

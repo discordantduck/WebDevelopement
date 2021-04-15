@@ -112,8 +112,62 @@
 
 ## Question 2
 ## (a)
+``` json
+{"events":
+    [
+        {
+            "name": "Speedrun",
+            "date": "March 32",
+            "description": "Complete Dark Souls as fast as you can"
+        },
+        {
+            "name": "No hit",
+            "date": "April 1",
+            "description": "Complete Dark Souls without getting hit or staggered"
+        },
+        {
+            "name": "Deathless",
+            "date": "Febuary 30",
+            "description": "Complete Dark Souls without dying"
+        }
+    ]
+}
+```
 ## (b)
+``` html
+{% extends "clubBase.njk" %}
+
+{% block metaStuff %}
+    <title>Activities</title>
+{% endblock %}
+    
+{% block main %}
+    <main>
+        <header>
+            <h1>Activity Schedule</h1>
+        </header>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            {%for event in events.events %}
+                <tbody>
+                    <th>{{event.name}}</th>
+                    <th>{{event.date}}</th>
+                    <th>{{event.description}}</th>
+                </tbody>
+            {% endfor %}
+        </table>
+    </main>
+{% endblock %}
+```
 ## (c)
+![2c](/images/2c.PNG)
 
 ## Question 3
 ## (a)

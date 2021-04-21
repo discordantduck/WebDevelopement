@@ -1,6 +1,7 @@
 const host = '127.0.0.1';
 const port = 3015;
 
+const session = require('express-session');
 const fs = require('fs');
 const bcrypt = require('bcryptjs');
 const express = require('express');
@@ -17,7 +18,7 @@ const urlencodedParser = express.urlencoded({extended: true});
 
 const nRounds = 13;
 const activities = require('./eventData.json');
-const users = require('./clubUsersHash.json');
+const clubUsers = require('./clubUsersHash.json');
 
 let memberApplications = [];
 
@@ -31,6 +32,15 @@ app.get('/activities', function(req, res)
     res.render('activities.njk', {events: activities});
 });
 
+app.get('/addActivityForm', function(req, res)
+{
+    res.render('addActivityForm.njk');
+});
+
+app.post('/addActivityForm', urlencodedParser, function(req, res)
+{
+});
+
 app.get('/login', function(req, res)
 {
     res.render('login.njk');
@@ -38,13 +48,13 @@ app.get('/login', function(req, res)
 
 app.post('/login', urlencodedParser, function(req, res)
 {
-    let i = users.findIndex(function(element)
+    let i = clubUsers.findIndex(function(element)
     {
         console.log(element);
         return element.user_email == req.body.user_email;
     });
 
-    if(bcrypt.compareSync(req.body.user_password, users[i].user_password))
+    if(bcrypt.compareSync(req.body.user_password, clubUsers[i].user_password))
     {
         res.render('welcome.njk', req.body);
     }
@@ -59,7 +69,7 @@ app.get('/membership', function(req, res)
     res.render('membership.njk');
 });
 
-app.post('/signup', urlencodedParser, function(req, res)
+app.post('/membership', urlencodedParser, function(req, res)
 {
     console.log('Membership signup called');
     const salt = bcrypt.genSaltSync(nRounds);

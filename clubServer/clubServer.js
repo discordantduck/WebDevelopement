@@ -1,6 +1,8 @@
 const host = '127.0.0.1';
 const port = 3015;
 
+const fs = require('fs');
+const bcrypt = require('bcryptjs');
 const express = require('express');
 const path = require('path');
 const app = express();
@@ -13,7 +15,10 @@ nunjucks.configure(path.join(__dirname, 'templates'),
 });
 const urlencodedParser = express.urlencoded({extended: true});
 
-let activities = require('./eventData.json');
+const nRounds = 13;
+const activities = require('./eventData.json');
+const users = require('./clubUsersHash.json');
+
 let memberApplications = [];
 
 app.get('/', function (req, res)
@@ -31,16 +36,36 @@ app.get('/login', function(req, res)
     res.render('login.njk');
 });
 
+app.post('/login', urlencodedParser, function(req, res)
+{
+    let i = users.findIndex(function(element)
+    {
+        console.log(element);
+        return element.user_email == req.body.user_email;
+    });
+
+    if(bcrypt.compareSync(req.body.user_password, users[i].user_password))
+    {
+        res.render('welcome.njk', req.body);
+    }
+    else
+    {
+        res.render('loginProblem.njk');
+    }
+});
+
 app.get('/membership', function(req, res)
 {
     res.render('membership.njk');
 });
 
-app.post('/membershipSignup', urlencodedParser, function(req, res)
+app.post('/signup', urlencodedParser, function(req, res)
 {
     console.log('Membership signup called');
-    delete req.body.user_password;
+    const salt = bcrypt.genSaltSync(nRounds);
+    req.body.user_password = bcrypt.hashSync(req.body.user_password, salt);
     memberApplications.push(req.body);
+    fs.writeFileSync("clubUsersHash.json", JSON.stringify(memberApplications, null, 2));
     console.log(memberApplications);
     res.render('thanks.njk', req.body);
 });

@@ -2,7 +2,7 @@ const fs = require('fs');
 const bcrypt = require('bcryptjs');
 const users = require('./clubUsers2.json');
 
-let nRounds = 10;
+let nRounds = 13;
 let hashedUsers = [];
 let start = new Date(); // timing code
 

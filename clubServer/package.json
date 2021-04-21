@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "commonmark": "^0.29.3",
     "express": "^4.17.1",
     "gray-matter": "^4.0.2",

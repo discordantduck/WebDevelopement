@@ -1,0 +1,17 @@
+{% extends "clubBase.njk" %}
+
+{% block metaStuff %}
+    <title>Members</title>
+{% endblock %}
+    
+{% block main %}
+    <main>
+        {% for user in users %}
+            <p>
+                Name: {{user.user_name}}
+                Email: {{user.user_email}}
+                Message: {{user.user_message}}
+            </p>
+        {% endfor %}
+    </main>
+{% endblock %}

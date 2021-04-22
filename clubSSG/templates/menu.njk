@@ -1,0 +1,12 @@
+<nav>
+    <ul>
+        <li><a href="./">Home</a></li>
+        <li><a href="activities">Activities</a></li>
+        <li><a href="login">Login</a></li>
+        <li><a href="membership">Membership</a></li>
+        {% if user and user.loggedin %}
+        <li><a href="addActivityForm">Add Activity</a></li>
+        <li><a href="logout">Logout</a></li>
+        {% endif %}
+    </ul>
+</nav>

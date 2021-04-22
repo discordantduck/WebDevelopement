@@ -87,19 +87,93 @@ app.post('/login', urlencodedParser, function(req, res)
 });
 ```
 ## (c)
+![2c](/images/2c.PNG)
 ## (d)
+![2d](/images/2d.PNG)
 
 ## Question 3
 ## (a)
+![3a](/images/3a.PNG)
 ## (b)
+``` javascript
+app.post('/addActivityForm', urlencodedParser, function(req, res)
+{
+    let temp =
+    {
+        "name": req.body.activity_name,
+        "date": req.body.activity_date,
+        "description": req.body.activity_description
+    };
+    activities.events.push(temp);
+
+    if(activities.length > 100)
+    {
+        activities.shift();
+    }
+    res.render('activities.njk', {events: activities});
+});
+```
 
 ## Question 4
 ## (a)
+``` javascript
+app.post('/login', urlencodedParser, function(req, res)
+{
+    let email = req.body.user_email;
+    let password = req.body.user_password;
+    let auser = clubUsers.find(function(user)
+    {
+        return user.user_email === email
+    });
+    if(!auser)
+    {
+        res.render("loginProblem.njk", {user: req.session.user});
+        return;
+    }
+    let verified = bcrypt.compareSync(password, auser.user_password);
+    if(verified)
+    {
+        let oldInfo = req.session.user;
+        req.session.regenerate(function(err)
+        {
+            if(err)
+            {
+                console.log(err);
+            }
+            req.session.user = Object.assign(oldInfo, auser,
+            {
+                loggedin: true,
+                role: 'admin'
+            });
+            res.render("welcome.njk", {user: req.session.user});
+        });
+    }
+    else
+    {
+        res.render("loginProblem.njk", {user: req.session.user});
+    }
+});
+```
 ## (b)
+``` javascript
+app.get('/logout', checkLoggedInMiddleware, function (req, res, next)
+{
+    let options = req.session.cookie;
+    req.session.destroy(function(err)
+    {
+        res.clearCookie(cookieName, options);
+        res.render("logout.njk");
+    })
+});
+```
 ## (c)
+![4c](/images/4c.PNG)
 
 ## Question 5
 ## (a)
+![5a](/images/5a.PNG)
 ## (b)
+![5b](/images/5b.PNG)
 ## (c)
+![5c](/images/5c.PNG)
 ## (d)

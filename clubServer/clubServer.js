@@ -80,7 +80,7 @@ app.post('/addActivityForm', urlencodedParser, function(req, res)
     {
         activities.shift();
     }
-    res.render('./activities.njk', {events: activities});
+    res.render('./activities.njk', {events: activities, user: req.session.user});
 });
 
 app.get('/logout', checkLoggedInMiddleware, function (req, res, next)
@@ -124,7 +124,7 @@ app.post('/login', urlencodedParser, function(req, res)
             req.session.user = Object.assign(oldInfo, auser,
             {
                 loggedin: true,
-                role: 'member'
+                role: 'admin'
             });
             res.render("./welcome.njk", {user: req.session.user});
         });

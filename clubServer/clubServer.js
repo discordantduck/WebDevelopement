@@ -3,6 +3,8 @@ const port = 3015;
 
 const cookieName = "clubsid";
 const nRounds = 13;
+let activities = require('./eventData.json');
+let clubUsers = require('./clubUsersHash.json');
 
 let memberApplications = [];
 
@@ -48,7 +50,6 @@ nunjucks.configure(path.join(__dirname, 'templates'),
     express: app
 });
 const urlencodedParser = express.urlencoded({extended: true});
-let activities = require('./eventData.json');
 
 app.get('/', function (req, res)
 {
@@ -99,7 +100,6 @@ app.get('/login', function(req, res)
 
 app.post('/logon', urlencodedParser, function(req, res)
 {
-    let clubUsers = require('./clubUsersHash.json');
     let email = req.body.user_email;
     let password = req.body.user_password;
     let auser = clubUsers.find(function(user)

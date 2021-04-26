@@ -1,22 +1,8 @@
 [
   {
-    "user_name": "hello",
-    "user_email": "hello@gmail.com",
-    "user_password": "$2a$13$3im49D/u57CRwt.YaXF7P.5NTrTvu1yxzNXHjeHPgno2QkArrm16y",
-    "user_message": "2131",
-    "_locals": {}
-  },
-  {
-    "user_name": "John Smith",
-    "user_email": "johnsmith@gmail.com",
-    "user_password": "$2a$13$5OZcQI20w5MLcrSJORZwI.glLtDy3njMpti3QkEr9KzV4LHDuacCq",
-    "user_message": "hello world",
-    "_locals": {}
-  },
-  {
-    "user_name": "John Smith",
-    "user_email": "johnsmith@gmail.com",
-    "user_password": "$2a$13$jiquW38727LK3orePdf7Ue45N5AwAytN.XdaERmx2g9XSmOthPr26",
-    "user_message": "1234"
+    "user_name": "a",
+    "user_email": "a@gmail.com",
+    "user_password": "$2a$13$xryOoCQIqOcDcufPbXCRoO2lxY7PvBtKndWWn0P/8imxYbBpe4qYy",
+    "user_message": ""
   }
 ]

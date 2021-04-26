@@ -3,8 +3,8 @@ const port = 3015;
 
 const cookieName = "clubsid";
 const nRounds = 13;
-const activities = require('./eventData.json');
-const clubUsers = require('./clubUsersHash.json');
+const activities = require('eventData.json');
+const clubUsers = require('clubUsersHash.json');
 
 let memberApplications = [];
 
@@ -36,7 +36,7 @@ const checkLoggedInMiddleware = function (req, res, next)
 {
     if(!req.session.user.loggedin)
     {
-        res.render("./forbidden.njk");
+        res.render("forbidden.njk");
     }
     else
     {
@@ -53,17 +53,17 @@ const urlencodedParser = express.urlencoded({extended: true});
 
 app.get('/', function (req, res)
 {
-    res.render('./index.njk', {user: req.session.user});
+    res.render('index.njk', {user: req.session.user});
 });
 
 app.get('/activities', function(req, res)
 {
-    res.render('./activities.njk', {events: activities, user: req.session.user});
+    res.render('activities.njk', {events: activities, user: req.session.user});
 });
 
 app.get('/addActivityForm', checkLoggedInMiddleware, function(req, res)
 {
-    res.render('./addActivityForm.njk', {user: req.session.user});
+    res.render('addActivityForm.njk', {user: req.session.user});
 });
 
 app.post('/addActivityForm', urlencodedParser, function(req, res)
@@ -80,7 +80,7 @@ app.post('/addActivityForm', urlencodedParser, function(req, res)
     {
         activities.shift();
     }
-    res.render('./activities.njk', {events: activities, user: req.session.user});
+    res.render('activities.njk', {events: activities, user: req.session.user});
 });
 
 app.get('/logout', checkLoggedInMiddleware, function (req, res, next)
@@ -89,13 +89,13 @@ app.get('/logout', checkLoggedInMiddleware, function (req, res, next)
     req.session.destroy(function(err)
     {
         res.clearCookie(cookieName, options);
-        res.render("./logout.njk");
+        res.render("logout.njk");
     })
 });
 
 app.get('/login', function(req, res)
 {
-    res.render('./login.njk', {user: req.session.user});
+    res.render('login.njk', {user: req.session.user});
 });
 
 app.post('/login', urlencodedParser, function(req, res)
@@ -108,7 +108,7 @@ app.post('/login', urlencodedParser, function(req, res)
     });
     if(!auser)
     {
-        res.render("./loginProblem.njk", {user: req.session.user});
+        res.render("loginProblem.njk", {user: req.session.user});
         return;
     }
     let verified = bcrypt.compareSync(password, auser.user_password);
@@ -126,18 +126,18 @@ app.post('/login', urlencodedParser, function(req, res)
                 loggedin: true,
                 role: 'admin'
             });
-            res.render("./welcome.njk", {user: req.session.user});
+            res.render("welcome.njk", {user: req.session.user});
         });
     }
     else
     {
-        res.render("./loginProblem.njk", {user: req.session.user});
+        res.render("loginProblem.njk", {user: req.session.user});
     }
 });
 
 app.get('/membership', function(req, res)
 {
-    res.render('./membership.njk', {user: req.session.user});
+    res.render('membership.njk', {user: req.session.user});
 });
 
 app.post('/membership', urlencodedParser, function(req, res)
@@ -146,14 +146,14 @@ app.post('/membership', urlencodedParser, function(req, res)
     const salt = bcrypt.genSaltSync(nRounds);
     req.body.user_password = bcrypt.hashSync(req.body.user_password, salt);
     memberApplications.push(req.body);
-    fs.writeFileSync("./clubUsersHash.json", JSON.stringify(memberApplications, null, 2));
+    fs.writeFileSync("clubUsersHash.json", JSON.stringify(memberApplications, null, 2));
     console.log(memberApplications);
-    res.render('./thanks.njk', req.body);
+    res.render('thanks.njk', req.body);
 });
 
 app.get('/users', checkLoggedInMiddleware, function (req, res)
 {
-    res.render('./users.njk', {users: clubUsers, user: req.session.user});
+    res.render('users.njk', {users: clubUsers, user: req.session.user});
 });
 
 app.get('/serverId', function(req, res)

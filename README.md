@@ -15,6 +15,9 @@ https://www.drbsclasses.org/student15/node/
 
 ## Question 3
 ## (a)
+```
+npm init
+```
 ## (b)
 ## (c)
 ## (d)

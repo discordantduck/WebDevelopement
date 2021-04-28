@@ -1,8 +1,8 @@
 {
-  "name": "practice",
+  "name": "clubserver",
   "version": "1.0.0",
   "description": "",
-  "main": "processIt.js",
+  "main": "clubServer.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

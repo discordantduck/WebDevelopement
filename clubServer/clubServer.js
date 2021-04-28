@@ -41,6 +41,17 @@ const checkLoggedInMiddleware = function (req, res, next)
         next();
     }
 };
+const checkAdminMiddleware = function (req, res, next)
+{
+    if((!req.session.user.loggedin || req.session.user.role != 'admin'))
+    {
+        res.render("forbidden.njk");
+    }
+    else
+    {
+        next();
+    }
+};
 const nunjucks = require('nunjucks');
 nunjucks.configure(path.join(__dirname, 'templates'),
 {
@@ -48,7 +59,7 @@ nunjucks.configure(path.join(__dirname, 'templates'),
     express: app
 });
 const urlencodedParser = express.urlencoded({extended: true});
-let activities = require('./eventData.json');
+let clubEvents = require('./eventData.json');
 let clubUsers = require('./clubUsersHash.json');
 
 
@@ -59,17 +70,17 @@ app.get('/', function (req, res)
     res.render('index.njk', {user: req.session.user});
 });
 
-app.get('/activities', function(req, res)
+app.get('/events', function(req, res)
 {
-    res.render('activities.njk', {events: activities, user: req.session.user});
+    res.render('events.njk', {events: clubEvents, user: req.session.user});
 });
 
-app.get('/addActivity', checkLoggedInMiddleware, function(req, res)
+app.get('/addEvent', checkLoggedInMiddleware, function(req, res)
 {
-    res.render('addActivity.njk', {user: req.session.user});
+    res.render('addEvent.njk', {user: req.session.user});
 });
 
-app.post('/addActivity', urlencodedParser, function(req, res)
+app.post('/addEvent', urlencodedParser, function(req, res)
 {
     let temp =
     {
@@ -78,16 +89,16 @@ app.post('/addActivity', urlencodedParser, function(req, res)
         "description": req.body.description
     };
 
-    activities.push(temp);
-    if(activities.length > 100)
+    clubEvents.push(temp);
+    if(clubEvents.length > 100)
     {
-        activities.shift();
+        clubEvents.shift();
     }
     
-    res.render('activities.njk', {events: activities, user: req.session.user});
+    res.render('events.njk', {events: clubEvents, user: req.session.user});
 });
 
-app.get('/logout', checkLoggedInMiddleware, function (req, res, next)
+app.get('/logout', function (req, res, next)
 {
     let options = req.session.cookie;
     req.session.destroy(function(err)
@@ -144,7 +155,7 @@ app.get('/membership', function(req, res)
     res.render('membership.njk', {user: req.session.user});
 });
 
-app.post('/signup', urlencodedParser, function(req, res)
+app.post('/signUp', urlencodedParser, function(req, res)
 {
     console.log('Membership signup called');
     const salt = bcrypt.genSaltSync(nRounds);
@@ -156,7 +167,7 @@ app.post('/signup', urlencodedParser, function(req, res)
     res.render('thanks.njk', req.body);
 });
 
-app.get('/users', checkLoggedInMiddleware, function (req, res)
+app.get('/users', checkAdminMiddleware, function (req, res)
 {
     res.render('users.njk', {users: clubUsers, user: req.session.user});
 });

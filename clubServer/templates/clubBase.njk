@@ -12,10 +12,10 @@
         <nav>
             <ul>
                 <li><a href="./">Home</a></li>
-                <li><a href="activities">Activities</a></li>
+                <li><a href="events">Events</a></li>
 
                 {% if user.loggedin %}
-                    <li><a href="addActivity">Add Activity</a></li>
+                    <li><a href="addEvent">Add Event</a></li>
 
                     {% if user.role == 'member' %}
                     {% endif %}

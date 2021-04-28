@@ -1,2 +1,9 @@
 [
+  {
+    "name": "johnsmith@gmail.com",
+    "email": "1@gmail.com",
+    "password": "$2a$13$0VXR19mXfiY5wPAytK3BHeGjWom14slRD426KLwwIDzmfOBbg5YPa",
+    "message": "",
+    "role": "admin"
+  }
 ]

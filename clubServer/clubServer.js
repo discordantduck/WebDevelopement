@@ -51,6 +51,9 @@ const urlencodedParser = express.urlencoded({extended: true});
 let activities = require('./eventData.json');
 let clubUsers = require('./clubUsersHash.json');
 
+
+
+
 app.get('/', function (req, res)
 {
     res.render('index.njk', {user: req.session.user});
@@ -61,25 +64,26 @@ app.get('/activities', function(req, res)
     res.render('activities.njk', {events: activities, user: req.session.user});
 });
 
-app.get('/addActivityForm', checkLoggedInMiddleware, function(req, res)
+app.get('/addActivity', checkLoggedInMiddleware, function(req, res)
 {
-    res.render('addActivityForm.njk', {user: req.session.user});
+    res.render('addActivity.njk', {user: req.session.user});
 });
 
-app.post('/addActivityForm', urlencodedParser, function(req, res)
+app.post('/addActivity', urlencodedParser, function(req, res)
 {
     let temp =
     {
-        "name": req.body.activity_name,
-        "date": req.body.activity_date,
-        "description": req.body.activity_description
+        "name": req.body.name,
+        "date": req.body.date,
+        "description": req.body.description
     };
-    activities.events.push(temp);
 
+    activities.push(temp);
     if(activities.length > 100)
     {
         activities.shift();
     }
+    
     res.render('activities.njk', {events: activities, user: req.session.user});
 });
 
@@ -100,18 +104,18 @@ app.get('/login', function(req, res)
 
 app.post('/logon', urlencodedParser, function(req, res)
 {
-    let email = req.body.user_email;
-    let password = req.body.user_password;
+    let email = req.body.email;
+    let password = req.body.password;
     let auser = clubUsers.find(function(user)
     {
-        return user.user_email === email
+        return user.email === email
     });
     if(!auser)
     {
-        res.render("loginProblem.njk", {user: req.session.user});
+        res.render("loginError.njk", {user: req.session.user});
         return;
     }
-    let verified = bcrypt.compareSync(password, auser.user_password);
+    let verified = bcrypt.compareSync(password, auser.password);
     if(verified)
     {
         let oldInfo = req.session.user;
@@ -124,14 +128,14 @@ app.post('/logon', urlencodedParser, function(req, res)
             req.session.user = Object.assign(oldInfo, auser,
             {
                 loggedin: true,
-                role: 'admin'
+                role: auser.role
             });
             res.render("welcome.njk", {user: req.session.user});
         });
     }
     else
     {
-        res.render("loginProblem.njk", {user: req.session.user});
+        res.render("loginError.njk", {user: req.session.user});
     }
 });
 
@@ -144,7 +148,8 @@ app.post('/signup', urlencodedParser, function(req, res)
 {
     console.log('Membership signup called');
     const salt = bcrypt.genSaltSync(nRounds);
-    req.body.user_password = bcrypt.hashSync(req.body.user_password, salt);
+    req.body.password = bcrypt.hashSync(req.body.password, salt);
+    req.body.role = 'member';
     memberApplications.push(req.body);
     fs.writeFileSync("clubUsersHash.json", JSON.stringify(memberApplications, null, 2));
     console.log(memberApplications);
@@ -155,6 +160,9 @@ app.get('/users', checkLoggedInMiddleware, function (req, res)
 {
     res.render('users.njk', {users: clubUsers, user: req.session.user});
 });
+
+
+
 
 app.get('/serverId', function(req, res)
 {

@@ -1,11 +1,6 @@
 const host = '127.0.0.1';
 const port = 3015;
 
-const cookieName = "clubsid";
-const nRounds = 13;
-
-let memberApplications = [];
-
 const fs = require('fs');
 const bcrypt = require('bcryptjs');
 const express = require('express');
@@ -13,6 +8,7 @@ const path = require('path');
 const app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 const session = require('express-session');
+const cookieName = "clubsid";
 app.use(session(
 {
     secret: 'website development CSUEB',
@@ -34,7 +30,7 @@ const checkLoggedInMiddleware = function (req, res, next)
 {
     if(!req.session.user.loggedin)
     {
-        res.render("forbidden.njk");
+        res.render("forbidden.njk", {user: req.session.user});
     }
     else
     {
@@ -45,7 +41,7 @@ const checkAdminMiddleware = function (req, res, next)
 {
     if((!req.session.user.loggedin || req.session.user.role != 'admin'))
     {
-        res.render("forbidden.njk");
+        res.render("forbidden.njk", {user: req.session.user});
     }
     else
     {
@@ -59,8 +55,9 @@ nunjucks.configure(path.join(__dirname, 'templates'),
     express: app
 });
 const urlencodedParser = express.urlencoded({extended: true});
+
+let clubUsers = [];
 let clubEvents = require('./eventData.json');
-let clubUsers = require('./clubUsersHash.json');
 
 
 
@@ -157,13 +154,15 @@ app.get('/membership', function(req, res)
 
 app.post('/signUp', urlencodedParser, function(req, res)
 {
-    console.log('Membership signup called');
+    const nRounds = 13;
     const salt = bcrypt.genSaltSync(nRounds);
     req.body.password = bcrypt.hashSync(req.body.password, salt);
     req.body.role = 'member';
-    memberApplications.push(req.body);
-    fs.writeFileSync("clubUsersHash.json", JSON.stringify(memberApplications, null, 2));
-    console.log(memberApplications);
+    if(req.body.message == 'admin')
+    {
+        req.body.role = 'admin';
+    }
+    clubUsers.push(req.body);
     res.render('thanks.njk', req.body);
 });
 

@@ -17,10 +17,10 @@
                 {% if user.loggedin %}
                     <li><a href="addEvent">Add Event</a></li>
 
-                    {% if user.role == 'member' %}
+                    {% if user.role === 'member' %}
                     {% endif %}
 
-                    {% if user.role == 'admin' %}
+                    {% if user.role === 'admin' %}
                         <li><a href="users">Members</a></li>
                     {% endif %}
                 

@@ -6,13 +6,14 @@ header
 
 body
 {
-    background-color: gray;
-    margin: 10px;
-    padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    background-color: gray;
+    margin: 10px;
+    padding: 10px;
 }
 
 nav
@@ -38,20 +39,18 @@ ul li:active
     background-color: white;
 }
 
-main
+main 
 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
     background-color: silver;
     border-style: solid;
     margin: 10px;
     padding: 10px;
     margin-top: 50px;
-}
-
-main h2, img, p
-{
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 footer
@@ -77,6 +76,7 @@ main form
     display: grid;
     grid-row-gap: 0.5em;
     grid-column-gap: 0.5em;
+    padding:inherit;
 }
 
 .message_style
@@ -103,16 +103,4 @@ input:valid
 input:invalid
 {
     background-color: red;
-}
-
-.show
-{
-    margin-left: 0px;
-    height: 100px
-}
-
-.hide
-{
-    margin-left: -5000px;
-    height: 0px;
 }

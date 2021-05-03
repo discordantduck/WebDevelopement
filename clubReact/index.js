@@ -14,11 +14,6 @@ class App extends React.Component
     {
         super(props);
         this.state = { role: "user", show: "home" };
-        this.showHandler = this.showHandler.bind(this);
-    }
-    showHandler(state)
-    {
-        this.setState({show: state});
     }
     render()
     {
@@ -37,7 +32,7 @@ class App extends React.Component
         }
         return (
         <>
-            <Menu role:role/>
+            <Menu />
             {content}
         </>
         );

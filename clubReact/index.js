@@ -15,6 +15,11 @@ class App extends React.Component
         super(props);
         this.state = { role: "user", show: "home" };
     }
+
+    homeHandler(event)
+    {
+        this.setState({show: "home"});
+    }
     render()
     {
         let content = <Home />;

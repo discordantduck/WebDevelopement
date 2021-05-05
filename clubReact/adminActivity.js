@@ -1,11 +1,12 @@
 import React from "react";
 
-function Events(props)
+function AdminActivity(props)
 {
     let rows = props.events.map(function(i)
     {
         return (
         <tr key={i.name}>
+            <td><button>Delete</button></td>
             <td>{i.name}</td>
             <td>{i.date}</td>
             <td>{i.description}</td>
@@ -15,6 +16,18 @@ function Events(props)
 
     return (
     <main>
+        <form>
+            <h1>Activity Management</h1>
+
+            <label>Name</label>
+            <input type="text" name={props.state.eventName}></input>
+
+            <label>Date</label>
+            <input type="text" date={props.state.eventDate}></input>
+
+            <button onClick={props.method.addEventHandler}>Add</button>
+        </form>
+
         <table className="myTable">
             <thead>
                 <tr>
@@ -27,8 +40,8 @@ function Events(props)
                 {rows}
             </tbody>
         </table>
-    </main>
+    </main>  
     );
 }
 
-export default Events;
+export default AdminActivity;

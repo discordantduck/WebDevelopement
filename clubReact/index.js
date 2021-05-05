@@ -1,24 +1,26 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+import events from "./eventData.json"
+
 import Menu from './menu';
 import Home from "./home";
 import Events from "./events";
-//import AddEvent from "./addEvent";
-//import Login from "./login";
-//import Logout from "./logout";
 import Membership from "./membership";
+import AdminActivity from "./adminActivity";
 
 class App extends React.Component
 {
     constructor(props)
     {
         super(props);
-        this.state = {role: "user", show: "home"};
+        this.state = {role: "admin", show: "home", eventName: "", eventDate: ""};
 
         this.homeHandler = this.homeHandler.bind(this);
         this.eventsHandler = this.eventsHandler.bind(this);
         this.membershipHandler = this.membershipHandler.bind(this);
+        this.adminActivityHandler = this.adminActivityHandler.bind(this);
+        this.addEventHandler = this.addEventHandler.bind(this);
     }
     homeHandler(event)
     {
@@ -28,21 +30,18 @@ class App extends React.Component
     {
         this.setState({show: "events"});
     }
-    addEventHandler(event)
-    {
-        this.setState({show: "addEvent"});
-    }
-    loginHandler(event)
-    {
-        this.setState({show: "login"})
-    }
-    logoutHandler(event)
-    {
-        this.setState({show: "logout"})
-    }
     membershipHandler(event)
     {
         this.setState({show: "membership"});
+    }
+    adminActivityHandler(event)
+    {
+        this.setState({show: "adminActivity"});
+    }
+    addEventHandler(event)
+    {
+        event.preventDefault();
+        this.setState({eventName: event.target.name, eventDate: event.target.date});
     }
     render()
     {
@@ -53,26 +52,20 @@ class App extends React.Component
                 content = <Home />;
                 break;
             case "events":
-                content = <Events />;
-                break;
-            case "addEvent":
-                content = <AddEvent />;
-                break;
-            case "login":
-                content = <Login />;
-                break;
-            case "logout":
-                content = <Logout />;
+                content = <Events events={events}/>;
                 break;
             case "membership":
                 content = <Membership />;
                 break;
+            case "adminActivity":
+                content = <AdminActivity method={this} state={this.state} events={events} />;
+                break;
             default:
-                content = (<h1>Something went wrong</h1>);
+                content = (<h1>Something went wrong with render()</h1>);
         }
         return (
         <>
-            <Menu state={this.state} method={this}/>
+            <Menu method={this} state={this.state}/>
             {content}
         </>
         );

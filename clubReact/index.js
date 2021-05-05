@@ -14,7 +14,7 @@ class App extends React.Component
     constructor(props)
     {
         super(props);
-        this.state = {role: "admin", show: "home", eventName: "", eventDate: ""};
+        this.state = {role: "admin", show: "adminActivity", events: events};
 
         this.homeHandler = this.homeHandler.bind(this);
         this.eventsHandler = this.eventsHandler.bind(this);
@@ -40,8 +40,7 @@ class App extends React.Component
     }
     addEventHandler(event)
     {
-        event.preventDefault();
-        this.setState({eventName: event.target.name, eventDate: event.target.date});
+        this.setState({events: this.state.events.concat(event)});
     }
     render()
     {
@@ -52,13 +51,13 @@ class App extends React.Component
                 content = <Home />;
                 break;
             case "events":
-                content = <Events events={events}/>;
+                content = <Events events={this.state.events}/>;
                 break;
             case "membership":
                 content = <Membership />;
                 break;
             case "adminActivity":
-                content = <AdminActivity method={this} state={this.state} events={events} />;
+                content = <AdminActivity method={this} events={this.state.events} />;
                 break;
             default:
                 content = (<h1>Something went wrong with render()</h1>);

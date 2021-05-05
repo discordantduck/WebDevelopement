@@ -53,6 +53,12 @@ main
     margin-top: 50px;
 }
 
+main img
+{
+    width: 640px;
+    height: 360px;
+}
+
 footer
 {
     text-align: center;

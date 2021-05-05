@@ -1,23 +1,42 @@
 import React from "react";
 
-function Menu()
+function Menu(props)
 {
-    let menu =
-    (
-        <nav>
-            <ul>
-                <li><a href="./">Home</a></li>
-                <li><a href="events">Events</a></li>
-                <li><a href="addEvent">Add Event</a></li>
-                <li><a href="users">Members</a></li>
-                <li><a href="logout">Logout</a></li>
-                <li><a href="login">Login</a></li>
-                <li><a href="membership">Membership</a></li>
-            </ul>
-        </nav>
-    );
-
-    return menu;
+    switch(props.state.role)
+    {
+        case "guest":
+            return (
+            <nav>
+                <ul>
+                    <li><a onClick={props.method.homeHandler}>Home</a></li>
+                    <li><a onClick={props.method.eventsHandler}>Events</a></li>
+                    <li><a onClick={props.method.membershipHandler}>Membership</a></li>
+                </ul>
+            </nav>
+            );
+        case "user":
+            return (
+            <nav>
+                <ul>
+                    <li><a onClick={props.method.homeHandler}>Home</a></li>
+                    <li><a onClick={props.method.eventsHandler}>Events</a></li>
+                    <li><a onClick={props.method.membershipHandler}>Membership</a></li>
+                </ul>
+            </nav>
+            );
+        case "admin":
+            return (
+            <nav>
+                <ul>
+                    <li><a onClick={props.method.homeHandler}>Home</a></li>
+                    <li><a onClick={props.method.eventsHandler}>Events</a></li>
+                    <li><a onClick={props.method.membershipHandler}>Membership</a></li>
+                </ul>
+            </nav>
+            );
+        default:
+            return (<h1>Something went wrong</h1>);
+    }
 }
 
 export default Menu;

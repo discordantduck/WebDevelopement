@@ -18,7 +18,6 @@ app.use(session(
 }));
 const setUpSessionMiddleware = function (req, res, next)
 {
-    console.log(req.session.user);
     if(!req.session.user)
     {
         req.session.user = {loggedin: false};
@@ -56,11 +55,11 @@ nunjucks.configure(path.join(__dirname, 'templates'),
 });
 const urlencodedParser = express.urlencoded({extended: true});
 
-let clubUsers = [];
+
+
+
+let clubUsers = require('./clubUsersHash.json');
 let clubEvents = require('./eventData.json');
-
-
-
 
 app.get('/', function (req, res)
 {
@@ -114,7 +113,7 @@ app.post('/logon', urlencodedParser, function(req, res)
 {
     let email = req.body.email;
     let password = req.body.password;
-    let auser = clubUsers.find(function(user)
+    let auser = clubUsers.users.find(function(user)
     {
         return user.email === email
     });
@@ -158,29 +157,21 @@ app.post('/signUp', urlencodedParser, function(req, res)
     const salt = bcrypt.genSaltSync(nRounds);
     req.body.password = bcrypt.hashSync(req.body.password, salt);
     req.body.role = 'member';
-    if(req.body.message == 'admin')
-    {
-        req.body.role = 'admin';
-    }
-    clubUsers.push(req.body);
+    clubUsers.users.push(req.body);
     res.render('thanks.njk', req.body);
 });
 
 app.get('/users', checkAdminMiddleware, function (req, res)
 {
-    res.render('users.njk', {users: clubUsers, user: req.session.user});
+    res.render('users.njk', {users: clubUsers.users, user: req.session.user});
 });
-
-
-
 
 app.get('/serverId', function(req, res)
 {
     let temp =
     {
         "studentName": "Leo",
-        "netId": "ti2236",
-        "message": "hello world"
+        "message": "hello there"
     };
     res.send(temp);
 });

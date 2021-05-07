@@ -1,4 +1,4 @@
-# Homework #10 Solution
+# Homework #12 Solution
 **Hui Lin**
 
 **NetID: ti2236**

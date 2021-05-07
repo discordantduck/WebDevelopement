@@ -1,4 +1,4 @@
-# My Website
+# My Game Club Website
 
 ## Home Page
 ![home](images/home.PNG)

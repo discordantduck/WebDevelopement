@@ -1,0 +1,27 @@
+{% extends "clubBase.njk" %}
+
+{% block metaStuff %}
+    <title>Add Event</title>
+{% endblock %}
+    
+{% block main %}
+    <main>
+        <form action="addEvent" method="post">
+            <fieldset>
+                <div>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name">
+                </div>
+                <div>
+                    <label for="date">Date:</label>
+                    <input type="text" id="date" name="date">
+                </div>
+                <div>
+                    <label for="description">Description:</label>
+                    <input type="text" id="description" name="description">
+                </div>
+                <div><button type="submit">Add</button></div>
+            </fieldset>
+        </form>
+    </main>
+{% endblock %}

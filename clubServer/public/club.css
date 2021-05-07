@@ -1,0 +1,83 @@
+header
+{
+    font-family: "Times New Roman", "seriff";
+    text-align: center;
+}
+
+body
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: gray;
+    margin: 10px;
+    padding: 10px;
+}
+
+nav
+{
+    background-color: silver;
+    border-style: ridge;
+    position: fixed;
+    top: 0px;
+    left: 25px;
+    right: 25px;
+}
+
+nav ul
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    list-style-type: none;
+}
+
+ul li:active
+{
+    background-color: white;
+}
+
+main
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: silver;
+    border-style: ridge;
+    margin: 5px;
+    margin-top: 40px;
+    padding: 5px;
+}
+
+footer
+{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: center;
+}
+
+table
+{
+    border-collapse: collapse;
+    border: 2px solid;
+}
+
+th, td
+{
+    border: 1px solid;
+    padding: 10px;
+    text-align: center;
+}
+
+input:valid
+{
+    background-color: green;
+}
+
+input:invalid
+{
+    background-color: red;
+}

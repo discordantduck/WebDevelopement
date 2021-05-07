@@ -1,0 +1,11 @@
+{% extends "clubBase.njk" %}
+
+{% block metaStuff %}
+    <title>Welcome</title>
+{% endblock %}
+    
+{% block main %}
+    <h1>Welcome {{user.name}}</h1>
+    <h2>Email: {{user.email}}</h2>
+    <h2>Role: {{user.role}}</h2>
+{% endblock %}

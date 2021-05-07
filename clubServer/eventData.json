@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Speedrun",
+        "date": "January 1",
+        "description": "Complete Celeste as fast as possible"
+    },
+    {
+        "name": "Deathless",
+        "date": "April 1",
+        "description": "Complete real life with zero deaths"
+    },
+    {
+        "name": "No Hit",
+        "date": "Febuary 31",
+        "description": "Complete Enter the Gungeon without getting hit"
+    }
+]

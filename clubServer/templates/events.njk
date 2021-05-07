@@ -1,0 +1,30 @@
+{% extends "clubBase.njk" %}
+
+{% block metaStuff %}
+    <title>Events</title>
+{% endblock %}
+    
+{% block main %}
+    <main>
+        <header>
+            <h1>Event Schedule</h1>
+        </header>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            {%for event in events %}
+                <tbody>
+                    <th>{{event.name}}</th>
+                    <th>{{event.date}}</th>
+                    <th>{{event.description}}</th>
+                </tbody>
+            {% endfor %}
+        </table>
+    </main>
+{% endblock %}

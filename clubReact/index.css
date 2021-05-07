@@ -1,0 +1,112 @@
+header
+{
+    font-family: "Times New Roman", "seriff";
+    text-align: center;
+}
+
+body
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: gray;
+    margin: 10px;
+    padding: 10px;
+}
+
+nav
+{
+    background-color: silver;
+    border-style: solid;
+    position: fixed;
+    top: 0px;
+    left: 25px;
+    right: 25px;
+}
+
+nav ul
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    list-style-type: none;
+}
+
+ul li:active
+{
+    background-color: white;
+}
+
+main 
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: silver;
+    border-style: solid;
+    margin: 10px;
+    padding: 10px;
+    margin-top: 50px;
+}
+
+main img
+{
+    width: 640px;
+    height: 360px;
+}
+
+footer
+{
+    text-align: center;
+}
+
+table
+{
+    border-collapse: collapse;
+    border: 2px solid;
+}
+
+th, td
+{
+    border: 1px solid;
+    padding: 10px;
+    text-align: center;
+}
+
+main form
+{
+    display: grid;
+    grid-row-gap: 0.5em;
+    grid-column-gap: 0.5em;
+    padding:inherit;
+}
+
+.message_style
+{
+    border: 5px solid;
+    border-color: red;
+    padding: 10px;
+    text-align: center;
+}
+
+.signup_summary_style
+{
+    border: 5px solid;
+    border-color: green;
+    padding: 10px;
+    text-align: center;
+}
+
+input:valid
+{
+    background-color: green;
+}
+
+input:invalid
+{
+    background-color: red;
+}

@@ -1,4 +1,4 @@
-# A Tour of My Website
+# My Website
 
 ## Home Page
 ![home](images/home.PNG)
